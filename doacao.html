@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Doe para o Met — Athena Culture</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: "Helvetica Neue", Arial, sans-serif; color: #222; background:#fafafa; line-height:1.5; }
+
+    header {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 40px;
+      background: linear-gradient(90deg,#8B0000,#B22222);
+      border-bottom:1px solid #660000;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .logo { color:#fff; font-weight:700; font-size:1.1rem; }
+    nav ul { list-style:none; display:flex; gap:22px; }
+    nav ul li a { color:#fff; text-decoration:none; font-weight:500; }
+    nav ul li a:hover { color:#ffd700; }
+
+    main.container { max-width:1100px; margin:36px auto; padding: 0 20px; }
+
+    .donation-hero {
+      display:flex;
+      gap:28px;
+      align-items:center;
+      justify-content:space-between;
+      background: #fff;
+      padding: 28px;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    }
+
+    .donation-text { flex:1; padding-right: 10px; }
+    .donation-text h1 { font-family: 'Playfair Display', serif; font-size: 34px; margin-bottom:12px; color:#0a1a3f; }
+    .donation-text p { color:#444; margin-bottom:10px; }
+
+    .donation-panel {
+      width: 360px;
+      background: #fff;
+      border-radius: 10px;
+      padding: 18px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      text-align:center;
+    }
+    .values { display:flex; gap:10px; flex-wrap:wrap; justify-content: center; margin-bottom:12px; }
+    .value-btn {
+      padding:10px 14px;
+      border-radius: 20px;
+      border: 1px solid #ddd;
+      background: #fff;
+      cursor: pointer;
+      font-weight:600;
+    }
+    .value-btn.selected {
+      background: #8B0000;
+      color: #fff;
+      border-color: #7a0000;
+    }
+
+    .custom-input { width:100%; padding:10px; border:1px solid #ddd; border-radius:6px; margin-top:10px; }
+
+    .donate-action { margin-top:14px; display:flex; gap:8px; justify-content:center; }
+    .btn-primary {
+      background: #c8102e;
+      color:#fff;
+      border:none;
+      padding:12px 18px;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:700;
+    }
+    .btn-outline { background:#fff; border:1px solid #ccc; padding:10px 14px; border-radius:8px; cursor:pointer; }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      padding: 20px;
+    }
+    .overlay.open { display:flex; }
+
+    .modal {
+      width: 100%;
+      max-width: 520px;
+      background: #fff;
+      border-radius: 10px;
+      padding: 18px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+      position: relative;
+      text-align:left;
+    }
+    .modal h3 { margin-bottom:8px; color:#222; }
+    .modal p.small { color:#666; margin-bottom:12px; font-size:0.95rem; }
+
+    .form-row { display:flex; gap:10px; margin-bottom:12px; }
+    .form-row input { flex:1; padding:10px; border:1px solid #ddd; border-radius:6px; }
+
+    .close-x { position:absolute; right:12px; top:10px; background:#f3f3f3; width:28px; height:28px; display:flex; align-items:center; justify-content:center; border-radius:50%; cursor:pointer; }
+
+    .pay-btn {
+      background: #c8102e;
+      color:#fff;
+      border:none;
+      width:100%;
+      padding:12px;
+      border-radius:8px;
+      font-weight:700;
+      cursor:pointer;
+      margin-top:8px;
+    }
+
+    .note { font-size:0.9rem; color:#666; margin-top:8px; text-align:left; }
+
+    /* === modal de mensagem custom === */
+    .message-box {
+      width: 100%;
+      max-width: 400px;
+      background: #fff;
+      padding: 22px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+      position: relative;
+    }
+    .message-box h2 {
+      margin-bottom: 10px;
+      color: #8B0000;
+    }
+    .message-box p { margin-bottom: 16px; color:#333; }
+    .message-box button {
+      background:#c8102e;
+      color:#fff;
+      border:none;
+      padding:10px 18px;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:600;
+    }
+
+    @media (max-width:720px){
+      .donation-hero { flex-direction: column; }
+      .donation-panel { width: 100%; }
+      .donation-text h1 { font-size:24px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Athena Culture</div>
+    <nav>
+      <ul>
+        <li><a href="chat.html">Início</a></li>
+        <li><a href="chat.html">Coleções & Obras</a></li>
+        <li><a href="doacao.html">Doe</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="donation-hero">
+      <div class="donation-text">
+        <h1>Doe para o Met</h1>
+        <p>Seu apoio ajuda a manter o extraordinário nível de programação, conservação e pesquisa do Museu, permitindo que milhões de visitantes vivenciem o poder da arte.</p>
+        <p>Você será direcionado para preencher os dados do cartão em um formulário seguro.</p>
+      </div>
+
+      <aside class="donation-panel">
+        <div style="font-size:0.95rem; color:#333; margin-bottom:8px;">Valores sugeridos</div>
+        <div class="values" id="values">
+          <button class="value-btn" data-value="5">R$ 5</button>
+          <button class="value-btn" data-value="10">R$ 10</button>
+          <button class="value-btn selected" data-value="25">R$ 25</button>
+          <button class="value-btn" data-value="50">R$ 50</button>
+          <button class="value-btn" data-value="100">R$ 100</button>
+        </div>
+        <input class="custom-input" id="customValue" type="number" min="1" placeholder="Outro valor (R$)" />
+        <div class="donate-action">
+          <button class="btn-outline" id="previewBtn">Ver resumo</button>
+          <button class="btn-primary" id="openPayBtn">Doar agora</button>
+        </div>
+        <div style="margin-top:10px; font-size:0.9rem; color:#666;">
+          <input type="checkbox" id="coverFee" /> <label for="coverFee">Cobrir taxa de transação</label>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <!-- Modal pagamento -->
+  <div class="overlay" id="overlay">
+    <div class="modal">
+      <div class="close-x" id="closeModal">✕</div>
+      <h3>Informações de pagamento</h3>
+      <p class="small">Insira abaixo os dados do seu cartão.</p>
+      <div class="form-row"><input id="cardNumber" placeholder="Número do cartão" maxlength="19"></div>
+      <div class="form-row">
+        <input id="expiry" placeholder="MM/AA" maxlength="5">
+        <input id="cvc" placeholder="CVC" maxlength="4" style="max-width:120px;">
+      </div>
+      <div class="form-row"><input id="nameOnCard" placeholder="Nome no cartão"></div>
+      <div class="note" id="amountNote">Total: R$ 25</div>
+      <button class="pay-btn" id="payBtn">Pague R$ 25</button>
+    </div>
+  </div>
+
+  <!-- Modal de mensagem custom -->
+  <div class="overlay" id="msgOverlay">
+    <div class="message-box">
+      <h2>MetMuseum.Athena</h2>
+      <p id="msgText"></p>
+      <button id="msgOkBtn">OK</button>
+    </div>
+  </div>
+
+  <script>
+    const q = s => document.querySelector(s);
+    const qa = s => [...document.querySelectorAll(s)];
+
+    let selectedValue = 25;
+    const customInput = q('#customValue');
+    const valueBtns = qa('.value-btn');
+    const coverFee = q('#coverFee');
+
+    function updateSelected(v){
+      valueBtns.forEach(b => b.classList.toggle('selected', +b.dataset.value === +v));
+      selectedValue = +v; customInput.value='';
+      updateAmountTexts();
+    }
+    valueBtns.forEach(btn => btn.onclick = ()=>updateSelected(btn.dataset.value));
+    customInput.oninput = ()=>{ if(+customInput.value>0){ valueBtns.forEach(b=>b.classList.remove('selected')); selectedValue=+customInput.value; updateAmountTexts(); }};
+
+    function computeTotal(){
+      let t = +selectedValue;
+      if(coverFee.checked){ t=Math.round((t*1.035+0.6)*100)/100; }
+      return t;
+    }
+    function updateAmountTexts(){
+      let total=computeTotal();
+      q('#amountNote').textContent=`Total: R$ ${total.toFixed(2).replace('.',',')}`;
+      q('#payBtn').textContent=`Pague R$ ${total.toFixed(2).replace('.',',')}`;
+    }
+
+    const overlay=q('#overlay'), payBtn=q('#payBtn');
+    q('#openPayBtn').onclick=()=>{ updateAmountTexts(); overlay.classList.add('open'); q('#cardNumber').focus(); };
+    q('#closeModal').onclick=()=>overlay.classList.remove('open');
+
+    payBtn.onclick=()=>{
+      const card=q('#cardNumber').value.trim(), expiry=q('#expiry').value, cvc=q('#cvc').value, name=q('#nameOnCard').value.trim();
+      if(card.length<12) return showMessage("Digite um número de cartão válido.");
+      if(!/^\d{2}\/\d{2}$/.test(expiry)) return showMessage("Digite a validade no formato MM/AA.");
+      if(cvc.length<3) return showMessage("Digite o CVC.");
+      if(!name) return showMessage("Digite o nome impresso no cartão.");
+
+      payBtn.disabled=true; payBtn.textContent="Processando...";
+      setTimeout(()=>{
+        payBtn.disabled=false;
+        payBtn.textContent=`Pague R$ ${computeTotal().toFixed(2).replace('.',',')}`;
+        overlay.classList.remove('open');
+        showMessage("Sua doação inspira a história! Obrigada.");
+      },1200);
+    };
+
+    // modal de mensagem custom
+    const msgOverlay=q('#msgOverlay'), msgText=q('#msgText'), msgOkBtn=q('#msgOkBtn');
+    function showMessage(txt){
+      msgText.textContent=txt;
+      msgOverlay.classList.add('open');
+    }
+    msgOkBtn.onclick=()=>msgOverlay.classList.remove('open');
+
+    // preview resumo
+    q('#previewBtn').onclick=()=>{ updateAmountTexts(); showMessage("Resumo: "+q('#amountNote').textContent); };
+
+    updateSelected(25);
+  </script>
+</body>
+</html>

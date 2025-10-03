@@ -32,8 +32,10 @@
 
   <!-- Exposições -->
   <section class="exposicoes">
-    <h2>Agora em Exibição</h2>
-    <div class="cards">
+  <h2>Agora em Exibição</h2>
+  <div class="carousel-container">
+    <button class="carousel-btn prev">&#10094;</button>
+    <div class="carousel-track">
       <div class="card">
         <img src="images/expo1.png" alt="Exposição 1">
         <h3>Jennie C. Jones Ensemble</h3>
@@ -55,9 +57,9 @@
         <p class="data-expo">Até 30 de outubro</p>
       </div>
       <div class="card">
-         <img src="images/expo5.png" alt="Exposição 5">
-         <h3>Alegoria e Abstração</h3>
-         <p class="data-expo">Até 12 de novembro</p>
+        <img src="images/expo5.png" alt="Exposição 5">
+        <h3>Alegoria e Abstração</h3>
+        <p class="data-expo">Até 12 de novembro</p>
       </div>
       <div class="card">
         <img src="images/expo6.png" alt="Exposição 6">
@@ -65,7 +67,9 @@
         <p class="data-expo">Até 20 de novembro</p>
       </div>
     </div>
-  </section>
+    <button class="carousel-btn next">&#10095;</button>
+  </div>
+</section>
 
   <!-- Footer -->
   <footer>
@@ -96,6 +100,7 @@
 </script>
 
   </footer>
+  <script src="carousel.js"></script>
 
 </body>
 </html>

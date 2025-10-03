@@ -4,24 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Doe para o Met — Athena Culture</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: "Helvetica Neue", Arial, sans-serif; color: #222; background:#fafafa; line-height:1.5; }
 
-    header {
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:18px 40px;
-      background: linear-gradient(90deg,#8B0000,#B22222);
-      border-bottom:1px solid #660000;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
     .logo { color:#fff; font-weight:700; font-size:1.1rem; }
     nav ul { list-style:none; display:flex; gap:22px; }
     nav ul li a { color:#fff; text-decoration:none; font-weight:500; }
@@ -160,12 +148,14 @@
 </head>
 <body>
   <header>
-    <div class="logo">Athena Culture</div>
+    <div class="logo">Met Museum</div>
     <nav>
       <ul>
         <li><a href="chat.html">Início</a></li>
-        <li><a href="chat.html">Coleções & Obras</a></li>
-        <li><a href="doacao.html">Doe</a></li>
+        <li><a href="#">Coleções & Obras</a></li>
+        <li><a href="#">Agenda Cultural</a></li>
+        <li><a href="#">Área do Visitante</a></li>
+        <li><a href="doacao.html">Faça uma Doação</a></li>
       </ul>
     </nav>
   </header>
@@ -286,5 +276,10 @@
 
     updateSelected(25);
   </script>
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Athena Culture | Todos os direitos reservados</p>
+  </footer>
+
 </body>
 </html>

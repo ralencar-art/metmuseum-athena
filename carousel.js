@@ -8,6 +8,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const cardsPerView = 3; // 3 cards por vez
   const totalCards = cards.length;
 
+  // Quando o usuário rolar manualmente (mouse ou dedo)
+let scrollTimer = null;
+track.addEventListener('scroll', () => {
+  clearTimeout(scrollTimer);
+  scrollTimer = setTimeout(() => {
+    const cw = getCardWidth();
+    index = Math.round(track.scrollLeft / cw);
+  }, 100); // debounce para não atualizar a cada pixel
+
+
   function updateCarousel() {
     const cardWidth = cards[0].offsetWidth + 20; // largura + margem
     track.style.transform = `translateX(${-currentIndex * cardWidth}px)`;

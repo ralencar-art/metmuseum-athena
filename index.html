@@ -72,35 +72,31 @@
 </section>
 
   <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Athena Culture | Todos os direitos reservados</p>
-  <!-- Embedded Messaging - Agentforce -->
-<script type="text/javascript">
-  function initEmbeddedMessaging() {
-    try {
-      embeddedservice_bootstrap.settings.language = 'en_US'; // pode trocar para 'pt_BR' se quiser
+      <footer>
+        <p>&copy; 2024 Match Museum. Todos os direitos reservados.</p>
+        <!-- Aqui você já tem o código do Agentforce -->
+        <script type='text/javascript'>
+            function initEmbeddedMessaging() {
+                try {
+                    embeddedservice_bootstrap.settings.language = 'en_US';
+                    embeddedservice_bootstrap.init(
+                        '00DKY00000NRyu9',
+                        'backup_athena',
+                        'https://trailsignup-0947c9037edb1f.my.site.com/ESWbackupathena1759436415781',
+                        {
+                            scrt2URL: 'https://trailsignup-0947c9037edb1f.my.salesforce-scrt.com'
+                        }
+                    );
+                } catch (err) {
+                    console.error('Error loading Embedded Messaging: ', err);
+                }
+            };
+        </script>
+        <script type='text/javascript' src='https://trailsignup-0947c9037edb1f.my.site.com/ESWbackupathena1759436415781/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+    </footer>
 
-      embeddedservice_bootstrap.init(
-        '00DKY00000NRyu9', // ID da sua Org Salesforce
-        'backup_athena',  // Nome da implantação
-        'https://trailsignup-0947c9037edb1f.my.site.com/ESWbackupathena1759436415781', // Endpoint do serviço
-        {
-          scrt2URL: 'https://trailsignup-0947c9037edb1f.my.salesforce-scrt.com'
-        }
-      );
-    } catch (err) {
-      console.error('Error loading Embedded Messaging: ', err);
-    }
-  }
-</script>
-
-<script type="text/javascript" 
-        src="https://trailsignup-0947c9037edb1f.my.site.com/ESWbackupathena1759436415781/assets/js/bootstrap.min.js" 
-        onload="initEmbeddedMessaging()">
-</script>
-
-  </footer>
-  <script src="carousel.js"></script>
-
+    <!-- Script do carrossel -->
+    <script src="carousel.js"></script>
 </body>
 </html>
+

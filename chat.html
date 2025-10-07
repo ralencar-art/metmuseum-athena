@@ -101,6 +101,10 @@
 
   </footer>
   <script src="carousel.js"></script>
-
+window.addEventListener("onEmbeddedMessagingReady", () => {
+            embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
+                    "Language" : embeddedservice_bootstrap.settings.language
+             });
+});  
 </body>
 </html>
